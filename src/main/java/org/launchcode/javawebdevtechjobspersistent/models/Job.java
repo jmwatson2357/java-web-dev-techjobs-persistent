@@ -2,6 +2,7 @@ package org.launchcode.javawebdevtechjobspersistent.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Optional;
 
 @Entity
 public class Job extends AbstractEntity{
