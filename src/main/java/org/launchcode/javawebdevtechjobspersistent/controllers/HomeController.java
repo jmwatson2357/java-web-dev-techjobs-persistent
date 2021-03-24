@@ -43,11 +43,7 @@ public class HomeController {
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
-                                       Errors errors, Model model, @RequestParam int employerId) {
-        Optional<Employer> result = employerRepository.findById(employerId);
-        Employer employer = result.get();
-        newJob.setEmployer(employer
-        );
+                                       Errors errors, Model model) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
             model.addAttribute(new Job());
