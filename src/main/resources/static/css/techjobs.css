@@ -1,5 +1,19 @@
+.bg-blue {
+    background-color: rgba(0,44,92,1);
+}
+
+.bg-tan {
+    background-color: rgba(210,200,179,1);
+}
+
 .body-content {
     margin-top: 72px;
+}
+
+.red-bottom-border {
+    border-bottom-color: rgba(230,0,0,1);
+    border-bottom-style: solid;
+    border-width: 0 0 3px 0;
 }
 
 td, th {
