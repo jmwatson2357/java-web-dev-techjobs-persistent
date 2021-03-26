@@ -29,6 +29,27 @@
         </ul>
     </div>
 </div>
-
+<div th:fragment="list-header" class="row">
+    <div class="col">
+        <h1 th:text="${#strings.capitalizeWords(title)}" class="display-5"></h1>
+    </div>
+</div>
+<div th:fragment="job-list" class="row">
+    <div class="col-4" th:each="job : ${jobs}">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="card-title" th:text="${job.name}"></h5>
+            </div>
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Job Id: <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a></h6>
+                <p class="card-text">Employer: <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a></p>
+                <h6 class="card-subtitle mt-2 text-muted">Skills</h6>
+                <th:block th:each="skill : ${job.skills}">
+                    <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+                </th:block>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

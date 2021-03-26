@@ -1,48 +1,51 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="bg-tan">
 
 <nav th:replace="fragments :: page-header"></nav>
 
-<h1 class="container text-center">Add Job</h1>
+<div class="container body-content">
+    <h1 class="text-center">Add Job</h1>
 
-<form method="post" style="max-width:600px;" class="container">
-    <div class="form-group form-floating mb-3">
-        <input class="form-control" th:field="${job.name}" placeholder="Name"/>
-        <label th:for="name">Name</label>
+    <form method="post" style="max-width:600px;" class="container">
+        <div class="form-group form-floating mb-3">
+            <input class="form-control" th:field="${job.name}" placeholder="Name"/>
+            <label th:for="name">Name</label>
 
-        <span th:errors="${job.name}" class="error"></span>
-    </div>
+            <span th:errors="${job.name}" class="error"></span>
+        </div>
 
-    <div class="form-group form-floating mb-3">
-        <select th:field="${job.employer}" class="form-select" />
-        <option value=""></option>
-        <option th:each="employer : ${employers}"
+        <div class="form-group form-floating mb-3">
+            <select th:field="${job.employer}" class="form-select" />
+            <option value=""></option>
+            <option th:each="employer : ${employers}"
                     th:text="${employer.name}"
                     th:value="${employer.id}"></option>
-        </select>
-        <label th:for="employer">Employer</label>
+            </select>
+            <label th:for="employer">Employer</label>
 
-        <a th:href="@{'/employers/add'}">Add Employers</a>
-    </div>
-
-    <div class="form-group mb-3">
-        <label th:for="skills" class="lead">Skills</label>
-        <div>
-            <th:block th:each="skill : ${skills}">
-                <input type="checkbox" name="skills" th:value="${skill.id}" class="form-check-input">
-                <label th:text="${skill.name}" class="form-check-label"></label>
-            </th:block>
-        </div>
-        <div class="mt-1">
-            <a th:href="@{'/skills/add'}">Add Skills</a>
+            <a th:href="@{'/employers/add'}">Add Employers</a>
         </div>
 
-    </div>
+        <div class="form-group mb-3">
+            <label th:for="skills" class="lead">Skills</label>
+            <div>
+                <th:block th:each="skill : ${skills}">
+                    <input type="checkbox" name="skills" th:value="${skill.id}" class="form-check-input">
+                    <label th:text="${skill.name}" class="form-check-label"></label>
+                </th:block>
+            </div>
+            <div class="mt-1">
+                <a th:href="@{'/skills/add'}">Add Skills</a>
+            </div>
 
-    <input type="submit" value="Add Job" class="btn btn-success"/>
-</form>
+        </div>
+
+        <input type="submit" value="Add Job" class="btn btn-success"/>
+    </form>
+</div>
+
 
 </body>
 </html>

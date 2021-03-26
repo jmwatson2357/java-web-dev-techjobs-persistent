@@ -10,6 +10,13 @@
     margin-top: 72px;
 }
 
+.hr-fade {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
 .red-bottom-border {
     border-bottom-color: rgba(230,0,0,1);
     border-bottom-style: solid;
@@ -57,11 +64,6 @@ label {
 
 .centered {
     text-align: center;
-}
-
-p {
-    vertical-align: top;
-    margin-left: 30px;
 }
 
 .centeredTable {
