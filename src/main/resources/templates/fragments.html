@@ -15,7 +15,10 @@
 
 <div th:fragment="page-header" class="navbar navbar-dark navbar-expand-md bg-blue red-bottom-border navbar-fixed-top">
     <div class="container-fluid">
-        <a th:href="@{/}" class="navbar-brand">TechJobs</a>
+        <a th:href="@{/}" class="navbar-brand">
+            <img src="/images/punch2.svg" alt="punch2.svg", width="50" clas="d-inline-block align-text-top img-white">
+            TechJobs
+        </a>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
                 <a th:href="@{/list}" class="nav-link">List</a>
