@@ -6,14 +6,13 @@
 
 <div th:replace="fragments :: page-header"></div>
 
-<div class="container body-content">
-    <h2>TechJobs</h2>
-    <ul>
-        <li th:each="job : ${jobs}">
-            <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
-        </li>
-    </ul>
-
+<div class="container mt-5">
+    <h1>TechJobs</h1>
+    <div class="list-group">
+        <th:block th:each="job : ${jobs}">
+            <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}" class="list-group-item list-group-item-action"></a>
+        </th:block>
+    </div>
 </div>
 
 </body>

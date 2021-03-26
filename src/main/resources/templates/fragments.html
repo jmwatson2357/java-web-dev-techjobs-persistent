@@ -6,25 +6,27 @@
     <!-- Bootstrap stylesheets and script -->
     <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
     <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
-    <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+
 
     <title th:text="'TechJobs' + ${title == null ? '' : ' :: ' + title}">TechJobs</title>
 </head>
 
 <body>
 
-<div th:fragment="page-header" class="navbar navbar-inverse navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <a th:href="@{/}" class="navbar-brand">TechJobs</a>
-        </div>
-        <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li><a th:href="@{/list}">List</a></li>
-                <li><a th:href="@{/search}">Search</a></li>
-                <li><a th:href="@{/add}">Add Jobs</a></li>
-            </ul>
-        </div>
+<div th:fragment="page-header" class="navbar navbar-dark navbar-expand-md bg-dark navbar-fixed-top">
+    <div class="container-fluid">
+        <a th:href="@{/}" class="navbar-brand">TechJobs</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a th:href="@{/list}" class="nav-link">List</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/search}" class="nav-link">Search</a>
+            </li>
+            <li class="nav-item">
+                <a th:href="@{/add}" class="nav-link">Add Jobs</a>
+            </li>
+        </ul>
     </div>
 </div>
 
