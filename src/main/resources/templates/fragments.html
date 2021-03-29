@@ -4,7 +4,7 @@
 <head th:fragment="head">
 
     <!-- Bootstrap stylesheets and script -->
-    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+    <link rel="stylesheet" th:href="@{https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css}">
     <link th:href="@{/css/techjobs.css}" rel="stylesheet" />
 
 
@@ -13,31 +13,37 @@
 
 <body>
 
-<div th:fragment="page-header" class="navbar navbar-dark navbar-expand-md bg-blue red-bottom-border navbar-fixed-top">
-    <div class="container-fluid">
-        <a th:href="@{/}" class="navbar-brand">
-            <img src="/images/punch2.svg" alt="punch2.svg", width="50" clas="d-inline-block align-text-top img-white">
+<nav th:fragment="page-header" class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" th:href="@{/}">
+            <img src="/images/punch2.svg" alt="punch2.svg", width="50">
             TechJobs
         </a>
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-                <a th:href="@{/list}" class="nav-link">List</a>
-            </li>
-            <li class="nav-item">
-                <a th:href="@{/search}" class="nav-link">Search</a>
-            </li>
-            <li class="nav-item">
-                <a th:href="@{/add}" class="nav-link">Add Jobs</a>
-            </li>
-        </ul>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarSet">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
-</div>
-<div th:fragment="list-header" class="row">
-    <div class="col">
-        <h1 th:text="${#strings.capitalizeWords(title)}" class="display-5"></h1>
+
+    <div id="navbarSet" class="navbar-menu">
+        <div class="navbar-start">
+            <a class="navbar-item" th:href="@{/list}">List</a>
+            <a class="navbar-item" th:href="@{/search}">Search</a>
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link">Add</a>
+                <div class="navbar-dropdown">
+                    <a class="navbar-item" th:href="@{/add}">Add Jobs</a>
+                    <a class="navbar-item" th:href="@{/employers/add}">Add Employers</a>
+                    <a class="navbar-item" th:href="@{/skills/add}">Add Skills</a>
+                </div>
+            </div>
+
+        </div>
     </div>
-</div>
-<div th:fragment="job-list" class="row">
+</nav>
+
+<div th:fragment="job-list" class="columns">
     <div class="col-4" th:each="job : ${jobs}">
         <div class="card">
             <div class="card-header">

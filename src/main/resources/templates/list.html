@@ -2,48 +2,51 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body class="bg-tan">
+<body>
 
 <div th:replace="fragments :: page-header"></div>
 
 <main class="container body-content">
-    <div class="row">
-        <div class="col-12">
-            <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-            <h2 class = "centered">View Jobs By Category</h2>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-4">
+    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
+    <h2 class = "subtitle">View Jobs By Category</h2>
+
+    <div class="columns">
+        <div class="column">
             <div class="card">
                 <div class="card-header">
-                    All
+                    <p class="card-header-title">All</p>
                 </div>
-                <div class="list-group list-group-flush">
-                        <a th:href="@{/list/jobs(column='All',value='View All')}" class="list-group-item list-group-action">View All</a>
+                <div class="card-content">
+                    <div class="content">
+                        <a th:href="@{/list/jobs(column='All',value='View All')}" class="">View All</a>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="column">
             <div class="card">
                 <div class="card-header">
-                    <a th:href="@{/employers/}" class="text-decoration-none lead">Employer</a>
+                    <p class="card-header-title">Employer</p>
                 </div>
-                <div class="list-group list-group-flush">
+                <div class="card-content">
                     <th:block th:each="employer : ${employers}">
-                        <a th:href="@{/list/jobs(column=employer,value=${employer.name})}" th:text="${employer.name}" class="list-group-item list-group-item-action"></a>
+                        <div class="content">
+                            <a th:href="@{/list/jobs(column=employer,value=${employer.name})}" th:text="${employer.name}" class="list-group-item list-group-item-action"></a>
+                        </div>
                     </th:block>
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="column">
             <div class="card">
                 <div class="card-header">
-                    <a th:href="@{/skills/}" class="text-decoration-none lead">Skill</a>
+                    <p class="card-header-title">Skill</p>
                 </div>
-                <div class="list-group list-group-flush">
+                <div class="card-content">
                     <th:block th:each="skill : ${skills}">
-                        <a th:href="@{/list/jobs(column=skill,value=${skill.name})}" th:text="${skill.name}" class="list-group-item list-group-item-action"></a>
+                        <div class="content">
+                            <a th:href="@{/list/jobs(column=skill,value=${skill.name})}" th:text="${skill.name}" class="list-group-item list-group-item-action"></a>
+                        </div>
                     </th:block>
                 </div>
             </div>

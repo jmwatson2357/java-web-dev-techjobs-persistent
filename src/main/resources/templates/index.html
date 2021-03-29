@@ -2,20 +2,21 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body class="bg-tan">
+<body>
 
 <div th:replace="fragments :: page-header"></div>
 
-<div class="container mt-5">
-    <h1>TechJobs</h1>
-    <div class="card" style="width: 18rem;">
-        <div class="list-group list-group flush">
-            <th:block th:each="job : ${jobs}" >
-                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}" class="list-group-item list-group-item-action"></a>
-            </th:block>
-        </div>
+<div class="container body-content">
+    <h1 class="title">TechJobs</h1>
+    <ul>
+        <li th:each="job : ${jobs}" class="columns">
+            <div class="box column is-3">
+                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
+            </div>
 
-    </div>
+        </li>
+    </ul>
+
 </div>
 
 </body>
