@@ -8,12 +8,9 @@
 
 <div class="container body-content">
     <h1 class="title">TechJobs</h1>
-    <ul>
-        <li th:each="job : ${jobs}" class="columns">
-            <div class="box column is-3">
-                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
-            </div>
-
+    <ul class="bd-links">
+        <li th:each="job : ${jobs}">
+                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}" class="box button is-info is-light"></a>
         </li>
     </ul>
 
