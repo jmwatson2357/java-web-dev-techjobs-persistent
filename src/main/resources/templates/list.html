@@ -2,56 +2,58 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body>
+<body class="has-background-light">
 
-<div th:replace="fragments :: page-header"></div>
+<header th:replace="fragments :: page-header"></header>
 
-<main class="container body-content">
-    <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
-    <h2 class = "subtitle">View Jobs By Category</h2>
-
-    <div class="columns">
-        <div class="column">
-            <div class="card">
-                <div class="card-header">
-                    <p class="card-header-title">All</p>
+<main class="hero is-light is-fullheight-with-navbar container">
+    <div class="">
+        <h1 class = "title pt-5">View Jobs By Category</h1>
+        <hr class = "hr-fade"/>
+        <div class="columns">
+            <div class="column">
+                <div class="card">
+                    <div class="card-header has-background-link">
+                        <p class="card-header-title has-text-link-light">All</p>
+                    </div>
+                    <div class="card-content">
+                        <div class="content">
+                            <a th:href="@{/list/jobs(column='All',value='View All')}" class="">View All</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-content">
-                    <div class="content">
-                        <a th:href="@{/list/jobs(column='All',value='View All')}" class="">View All</a>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-header has-background-link">
+                        <p class="card-header-title has-text-link-light">Employer</p>
+                    </div>
+                    <div class="card-content">
+                        <th:block th:each="employer : ${employers}">
+                            <div class="content">
+                                <a th:href="@{/list/jobs(column=employer,value=${employer.name})}" th:text="${employer.name}" class="list-group-item list-group-item-action"></a>
+                            </div>
+                        </th:block>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="card">
+                    <div class="card-header has-background-link">
+                        <p class="card-header-title has-text-link-light">Skill</p>
+                    </div>
+                    <div class="card-content">
+                        <th:block th:each="skill : ${skills}">
+                            <div class="content">
+                                <a th:href="@{/list/jobs(column=skill,value=${skill.name})}" th:text="${skill.name}" class="list-group-item list-group-item-action"></a>
+                            </div>
+                        </th:block>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="column">
-            <div class="card">
-                <div class="card-header">
-                    <p class="card-header-title">Employer</p>
-                </div>
-                <div class="card-content">
-                    <th:block th:each="employer : ${employers}">
-                        <div class="content">
-                            <a th:href="@{/list/jobs(column=employer,value=${employer.name})}" th:text="${employer.name}" class="list-group-item list-group-item-action"></a>
-                        </div>
-                    </th:block>
-                </div>
-            </div>
-        </div>
-        <div class="column">
-            <div class="card">
-                <div class="card-header">
-                    <p class="card-header-title">Skill</p>
-                </div>
-                <div class="card-content">
-                    <th:block th:each="skill : ${skills}">
-                        <div class="content">
-                            <a th:href="@{/list/jobs(column=skill,value=${skill.name})}" th:text="${skill.name}" class="list-group-item list-group-item-action"></a>
-                        </div>
-                    </th:block>
-                </div>
-            </div>
-        </div>
     </div>
+
 </main>
 
 </body>

@@ -2,16 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="container  body-content">
-<h1 th:text="${'Employer: ' + employer.name}">Default Title</h1>
+<body class="has-background-light">
 
-<nav th:replace="fragments :: page-header"></nav>
+    <header th:replace="fragments :: page-header"></header>
 
-<div class="job-listing">
-    <p th:text="${'Name: ' + employer.name}"></p>
-    <p th:text="${'Location: ' + employer.location}"></p>
-</div>
-
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <h1 th:text="${'Employer: ' + employer.name}" class="title pt-5">Default Title</h1>
+            <p th:text="${'Location: ' + employer.location}" class="subtitle"></p>
+            <hr class="hr-fade"/>
+            <h2 class="subtitle"> Jobs:</h2>
+            <ul>
+                <th:block th:each="job : ${employer.jobs}">
+                    <li class="box" style="width: 25%;">
+                        <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
+                    </li>
+                </th:block>
+            </ul>
+        </div>
+    </main>
 
 </body>
 </html>

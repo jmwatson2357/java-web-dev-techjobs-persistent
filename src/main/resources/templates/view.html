@@ -2,50 +2,30 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 
-<body class="bg-tan">
+<body class="has-background-light">
 
-<nav th:replace="fragments :: page-header"></nav>
+    <header th:replace="fragments :: page-header"></header>
 
-<main class="container body-content">
-    <div class="row">
-        <h1 th:text="${'Job: ' + job.name}" class="display-5">Default Title</h1>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <h1 th:text="${'Job: ' + job.name}" class="title pt-5">Default Title</h1>
+            <hr class="hr-fade">
+            <div class="card" style="width: 20rem;">
                 <div class="card-body">
-                    <p th:text="${'ID: ' + job.id}"></p>
-                    <p>
-                        Employer: <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
-                    </p>
-                    <h6 class="card-subtitle mt-2 text-muted">Skills</h6>
+                    <p th:text="${'ID: ' + job.id}" class="subtitle"></p>
+                    <p class="subtitle"><span >Employer:</span> <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a></p>
+                    <p class="subtitle">Skills</p>
+                </div>
+                <div class="card-footer">
                     <th:block th:each="skill : ${job.skills}">
-                        <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+                        <div class="card-footer-item">
+                            <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
+                        </div>
                     </th:block>
                 </div>
             </div>
         </div>
-    </div>
-</main>
-
-
-
-
-<!--<div class="job-listing">-->
-<!--    <p th:text="${'ID: ' + job.id}"></p>-->
-<!--    <p th:text="${'Name: ' + job.name}"></p>-->
-<!--    <p>-->
-<!--        Employer: <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>-->
-<!--    </p>-->
-<!--    <p> Skills:-->
-<!--        <ul>-->
-<!--            <li th:each="skill : ${job.skills}">-->
-<!--                <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>-->
-<!--            </li>-->
-<!--        </ul>-->
-<!--    </p>-->
-<!--</div>-->
-
+    </main>
 
 </body>
 </html>

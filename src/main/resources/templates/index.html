@@ -2,19 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body>
+<body class="has-background-light">
 
-<div th:replace="fragments :: page-header"></div>
+    <header th:replace="fragments :: page-header"></header>
 
-<div class="container body-content">
-    <h1 class="title">TechJobs</h1>
-    <ul class="bd-links">
-        <li th:each="job : ${jobs}">
-                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}" class="box button is-info is-light"></a>
-        </li>
-    </ul>
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <h1 class="title pt-5">TechJobs</h1>
+            <hr class="hr-fade">
+            <ul class="bd-links">
+                <li th:each="job : ${jobs}">
+                    <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}" class="box button is-link"></a>
+                </li>
+            </ul>
+        </div>
 
-</div>
+    </main>
 
 </body>
 </html>

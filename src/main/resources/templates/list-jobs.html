@@ -2,14 +2,16 @@
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
 </head>
-<body class="bg-tan">
+<body class="has-background-light">
 
-<div th:replace="fragments :: page-header"></div>
+    <header th:replace="fragments :: page-header"></header>
 
-<main class="container body-content">
-    <div th:replace="fragments :: list-header"></div>
-    <div th:replace="fragments :: job-list"></div>
-</main>
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <div th:replace="fragments :: list-header"></div>
+            <div th:replace="fragments :: job-list"></div>
+        </div>
+    </main>
 
 </body>
 </html>

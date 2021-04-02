@@ -1,61 +1,41 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body>
+<body class="has-background-light">
 
-<nav th:replace="fragments :: page-header"></nav>
+    <header th:replace="fragments :: page-header"></header>
 
-<div class="container body-content">
-    <h1 th:text="${#strings.capitalizeWords(title)}" class="title"></h1>
-    <form th:action="@{/search/results}" method = "post" class="box column is-6">
-        <h2 class="subtitle">Search by:</h2>
-        <div class="control">
-            <th:block th:each="column : ${columns}">
-                <input
-                        class="radio"
-                        type="radio"
-                        name="searchType"
-                        th:id="${column.key}"
-                        th:value="${column.key}"
-                        th:checked="${column.key == 'all'}"/>
-                <label th:for="${column.key}" th:text="${column.value}" class="radio"></label>
-            </th:block>
-        </div>
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <div th:replace="fragments :: list-header"></div>
 
-        <div class="field">
-            <label class="label" for="searchTerm">Keyword:</label>
-            <input type="text" name="searchTerm" id="searchTerm" class="input" placeholder="Keyword"/>
-        </div>
-        <div class="field">
-            <input type="submit" value="Search" class="button is-success" />
-        </div>
-    </form>
-    <hr class="hr-fade"/>
-    <div class="bd-links">
-        <th:block th:each="job : ${jobs}">
-                <div class="card">
-                    <header class="card-header">
-                        <p class="card-header-title" th:text="${job.name}">Default Job Name</p>
-                    </header>
-                    <div class="card-content">
-                        <div class="content">
-                            <p> Job Id:
-                                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.id}"></a>
-                            </p>
-                            <p> Employer:
-                                <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a>
-                            </p>
-                            <p> Skills:
-                                <th:block th:each="skill : ${job.skills}">
-                                    <a th:href="@{'/skills/view/' + ${skill.id}}" th:text="${skill.name}"></a>
-                                </th:block>
-                            </p>
-                        </div>
-                    </div>
+            <form th:action="@{/search/results}" method = "post" class="box column is-6">
+                <h2 class="subtitle">Search by:</h2>
+                <div class="control">
+                    <th:block th:each="column : ${columns}">
+                        <input
+                                class="radio"
+                                type="radio"
+                                name="searchType"
+                                th:id="${column.key}"
+                                th:value="${column.key}"
+                                th:checked="${column.key == 'all'}"/>
+                        <label th:for="${column.key}" th:text="${column.value}" class="radio"></label>
+                    </th:block>
                 </div>
-        </th:block>
-    </div>
-</div>
+
+                <div class="field">
+                    <label class="label" for="searchTerm">Keyword:</label>
+                    <input type="text" name="searchTerm" id="searchTerm" class="input" placeholder="Keyword"/>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Search" class="button is-success" />
+                </div>
+            </form>
+            <hr class="hr-fade"/>
+            <div th:replace="fragments :: job-list"></div>
+        </div>
+    </main>
 
 </body>
 </html>

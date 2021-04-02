@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="bg-tan">
+<body class="has-background-light">
 
-<nav th:replace="fragments :: page-header"></nav>
+    <header th:replace="fragments :: page-header"></header>
 
-<div class="container body-content">
-    <h1 class="text-center">Add Job</h1>
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <h1 class="title pt-5">Add Job</h1>
+            <hr class="hr-fade">
+            <form method="post" style="max-width:600px;" class="box">
+                <div class="field">
+                    <label th:for="name" class="label">Name</label>
+                    <div class="control">
+                        <input class="input is-small" th:field="${job.name}" placeholder="Name"/>
+                    </div>
+                    <span th:errors="${job.name}" class="error"></span>
+                </div>
 
-    <form method="post" style="max-width:600px;" class="container">
-        <div class="form-group form-floating mb-3">
-            <input class="form-control" th:field="${job.name}" placeholder="Name"/>
-            <label th:for="name">Name</label>
+                <div class="field">
+                    <label th:for="employer" class="label">Employer</label>
+                    <div class="select is-small">
+                        <select th:field="${job.employer}"/>
+                        <option value="">Select an Employer</option>
+                        <option th:each="employer : ${employers}"
+                                th:text="${employer.name}"
+                                th:value="${employer.id}"></option>
+                        </select>
+                    </div>
+                    <a th:href="@{'/employers/add'}" class="button is-rounded is-link is-small">Add Employers</a>
+                </div>
 
-            <span th:errors="${job.name}" class="error"></span>
+                <div class="field">
+                    <label th:for="skills" class="label">Skills</label>
+                    <div class="control">
+                        <th:block th:each="skill : ${skills}">
+                            <input type="checkbox" name="skills" th:value="${skill.id}" class="checkbox">
+                            <label th:text="${skill.name}" class="form-check-label"></label>
+                        </th:block>
+                        <a th:href="@{'/skills/add'}" class="button is-rounded is-link is-small">Add Skills</a>
+                    </div>
+                </div>
+                <div class="field">
+                    <input type="submit" value="Add Job" class="button is-success is-small is-rounded"/>
+                </div>
+            </form>
         </div>
-
-        <div class="form-group form-floating mb-3">
-            <select th:field="${job.employer}" class="form-select" />
-            <option value=""></option>
-            <option th:each="employer : ${employers}"
-                    th:text="${employer.name}"
-                    th:value="${employer.id}"></option>
-            </select>
-            <label th:for="employer">Employer</label>
-
-            <a th:href="@{'/employers/add'}">Add Employers</a>
-        </div>
-
-        <div class="form-group mb-3">
-            <label th:for="skills" class="lead">Skills</label>
-            <div>
-                <th:block th:each="skill : ${skills}">
-                    <input type="checkbox" name="skills" th:value="${skill.id}" class="form-check-input">
-                    <label th:text="${skill.name}" class="form-check-label"></label>
-                </th:block>
-            </div>
-            <div class="mt-1">
-                <a th:href="@{'/skills/add'}">Add Skills</a>
-            </div>
-
-        </div>
-
-        <input type="submit" value="Add Job" class="btn btn-success"/>
-    </form>
-</div>
-
+    </main>
 
 </body>
 </html>
