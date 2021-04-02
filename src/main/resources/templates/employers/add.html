@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="bg-tan">
+<body class="has-background-light">
     <nav th:replace="fragments :: page-header"></nav>
-    <div class="container body-content">
-        <div class="row">
-            <div class="col">
-                <h1>Add Employer</h1>
-            </div>
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <h1 class="title pt-5">Add Employer</h1>
+            <hr class="hr-fade"/>
+            <form method="post" style="max-width:600px;" class="box">
+                <div class="field">
+                    <label th:for="name" class="label">Employer Name</label>
+                    <input class="input is-small" th:field="${employer.name}" placeholder="Employer Name"/>
+                    <span th:errors="${employer.name}" class="error"></span>
+                </div>
+
+                <div class="field">
+                    <label th:for="location" class="label">Employer Location</label>
+                    <input class="input is-small" th:field="${employer.location}" placeholder="Employer location"/>
+                    <span th:errors="${employer.location}" class="error"></span>
+                </div>
+
+                <div class="field">
+                    <input type="submit" value="Add Employer" class="button is-success is-small is-rounded"/>
+                </div>
+            </form>
         </div>
-        <div class="row">
-            <div class="col">
-                <form method="post" style="max-width:600px;">
-                    <div class="form-group form-floating mb-3">
-                        <input class="form-control" th:field="${employer.name}" placeholder="Employer Name"/>
-                        <label th:for="name">Employer Name</label>
-                        <span th:errors="${employer.name}" class="error"></span>
-                    </div>
-
-                    <div class="form-group form-floating mb-3">
-                        <input class="form-control" th:field="${employer.location}" placeholder="Employer location"/>
-                        <label th:for="location">Employer Location</label>
-                        <span th:errors="${employer.location}" class="error"></span>
-                    </div>
-
-                    <input type="submit" value="Add Employer" class="btn btn-success"/>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
+    </main>
 </body>
 </html>

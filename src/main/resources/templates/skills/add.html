@@ -1,38 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
-<body class="bg-tan">
+<body class="has-background-light">
     <nav th:replace="fragments :: page-header"></nav>
-    <div class="container body-content">
-        <div class="row">
-            <div class="col">
-                <h1> Add Skill</h1>
-            </div>
+    <main class="hero is-light is-fullheight-with-navbar container">
+        <div class="hero-header">
+            <h1 class="title pt-5"> Add Skill</h1>
+            <hr class="hr-fade"/>
+            <form method="post" style="max-width:600px;" class="box">
+                <div class="field">
+                    <label th:for="name" class="label">Skill Name</label>
+                    <input class="input is-small" th:field="${skill.name}" placeholder="Skill Name"/>
+                    <span th:errors="${skill.name}" class="error"></span>
+                </div>
+
+                <div class="field">
+                    <label th:for="description" class="label">Skill Description</label>
+                    <input class="input is-small" th:field="${skill.description}" placeholder="Skill Description"/>
+                    <span th:errors="${skill.description}" class="error"></span>
+                </div>
+
+                <div class="field">
+                    <input type="submit" value="Add Skill" class="button is-success is-small is-rounded"/>
+                </div>
+            </form>
         </div>
-        <div class="row">
-            <div class="col">
-                <form method="post" style="max-width:600px;">
-                    <div class="form-group form-floating mb-3">
-                        <input class="form-control" th:field="${skill.name}" placeholder="Skill Name"/>
-                        <label th:for="name">Skill Name</label>
-                        <span th:errors="${skill.name}" class="error"></span>
-                    </div>
-                    <div class="form-group form-floating mb-3">
-                        <input class="form-control" th:field="${skill.description}" placeholder="Skill Description"/>
-                        <label th:for="description">Skill Description</label>
-                        <span th:errors="${skill.description}" class="error"></span>
-                    </div>
-
-                    <input type="submit" value="Add Skill" class="btn btn-success"/>
-                </form>
-            </div>
-        </div>
-    </div>
-
-
-
-
-
-
+    </main>
 </body>
 </html>

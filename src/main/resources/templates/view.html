@@ -10,11 +10,11 @@
         <div class="hero-header">
             <h1 th:text="${'Job: ' + job.name}" class="title pt-5">Default Title</h1>
             <hr class="hr-fade">
-            <div class="card" style="width: 20rem;">
+            <div class="card px-3" style="width: 20rem;">
                 <div class="card-body">
-                    <p th:text="${'ID: ' + job.id}" class="subtitle"></p>
-                    <p class="subtitle"><span >Employer:</span> <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a></p>
-                    <p class="subtitle">Skills</p>
+                    <p th:text="${'ID: ' + job.id}" class="has-text-weight-light"></p>
+                    <p class="has-text-weight-light"><span >Employer:</span> <a th:href="@{'/employers/view/' + ${job.employer.id}}" th:text="${job.employer.name}"></a></p>
+                    <p>Skills</p>
                 </div>
                 <div class="card-footer">
                     <th:block th:each="skill : ${job.skills}">
